@@ -117,7 +117,7 @@ public class App {
             System.out.print(ch);
             lineSeperator(N - 1, ch);
         } // end if
-            else { System.out.println(""); } // end if
+        else { System.out.println(""); } // end else
 
     } // end lineSeperator
 

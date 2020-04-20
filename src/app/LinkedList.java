@@ -92,7 +92,7 @@ public class LinkedList<T> {
 
         System.out.println("ENTER: add(T element), Adding: " + element);
 
-        if(_head == null) { 
+        if(isEmpty()) { 
 
             // the list is empty so create a new list
             _head = new Node<T>(element);
@@ -140,5 +140,52 @@ public class LinkedList<T> {
 
 
     } // end delete
+
+    /**
+     * 
+     * <p><strong><em>Description: </em></strong>icheck to see if the list is empty</p>
+     * 
+     * <p><strong><em>Method Name: </em></strong>isEmpty</p>
+     *  
+     * <p><strong><em>Method Notes: </em></strong>none</p>
+     * 
+     * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Post-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
+     * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
+     *
+     * @return true if list is empty, false if it contains data
+     */
+    public boolean isEmpty() {
+
+        if(Node.counter == 0) { return true ;} // end if
+        else { return false; } // end else
+
+    } // end isEmpty
+
+    /**
+     * 
+     * <p><strong><em>Description: </em></strong>returns current sizer of list</p>
+     * 
+     * <p><strong><em>Method Name: </em></strong>getSize</p>
+     *  
+     * <p><strong><em>Method Notes: </em></strong>none</p>
+     * 
+     * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Post-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
+     * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
+     *
+     * @return returns size of list
+     */
+    public int getSize() {
+
+        return Node.counter;
+
+    } // end getSize
 
 } // end LinkedList
