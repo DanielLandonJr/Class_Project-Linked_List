@@ -1,23 +1,49 @@
 package app;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+
 /**
- *  
- * <p><strong><em>Application Name: </em></strong>Class_Projects-Linked_List</p>
- * <p><strong><em>Class Name: </em></strong>App</p>
  * 
- * <p><strong><em>Application Notes: </em></strong>none</p>
- *  
- * <p><strong><em>Class Notes: </em></strong>none</p>
+ * <p>
+ * <strong><em>Application Name: </em></strong>Class_Projects-Linked_List
+ * </p>
+ * <p>
+ * <strong><em>Class Name: </em></strong>App
+ * </p>
  * 
- * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+ * <p>
+ * <strong><em>Application Notes: </em></strong>none
+ * </p>
  * 
- * <p><strong><em>Post-Conditions: </em></strong>none</p>
+ * <p>
+ * <strong><em>Class Notes: </em></strong>none
+ * </p>
  * 
- * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
- * <p><strong><em>Instructor: </em></strong>Dr. Robert Walsh</p>
- * <p><strong><em>Course: </em></strong>SP20-SE-CSCI-C202-17057</p>
- * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
- * <p><strong><em>Due Date: </em></strong>04.23.2020</p>
+ * <p>
+ * <strong><em>Pre-Conditions: </em></strong>none
+ * </p>
+ * 
+ * <p>
+ * <strong><em>Post-Conditions: </em></strong>none
+ * </p>
+ * 
+ * <p>
+ * <strong><em>Author: </em></strong>Daniel C. Landon Jr.
+ * </p>
+ * <p>
+ * <strong><em>Instructor: </em></strong>Dr. Robert Walsh
+ * </p>
+ * <p>
+ * <strong><em>Course: </em></strong>SP20-SE-CSCI-C202-17057
+ * </p>
+ * <p>
+ * <strong><em>Start Date: </em></strong>04.20.2020
+ * </p>
+ * <p>
+ * <strong><em>Due Date: </em></strong>04.23.2020
+ * </p>
  * 
  */
 public class App {
@@ -42,10 +68,22 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
 
+        // variables
+        Instant _tStart = null;
+        Instant _tEnd = null;
+        Duration _tElapsed = null;
+
         try {
 
+            _tStart = Instant.now();
+
+            // variables
             LinkedList<String> _list = new LinkedList<String>();
 
+            System.out.println();
+            lineSeperator(80, '*');
+            System.out.println();
+            System.out.println("\tSTART TIME: " + _tStart);
             System.out.println();
 
             // current status of list
@@ -155,6 +193,29 @@ public class App {
             System.out.println();
             System.out.println("\n" + _list.show());
             System.out.println();
+
+            // does list contain element
+            lineSeperator(80, '*');
+            System.out.println();
+            System.out.println(">>>>>>>>>> DOES LIST CONTAIN <<<<<<<<<<");
+            System.out.println();
+            System.out.println("Is the list Empty: " + _list.isEmpty());
+            System.out.println("Number of elements in list: " + _list.getSize());
+            System.out.println();
+            System.out.println("\n" + _list.show());
+            System.out.println();
+            String _searchValue = "NCC-1701: Pike";
+            List<Object> _retVal = _list.contains(_searchValue);
+            if((boolean) _retVal.get(0)) {
+                // found
+                System.out.println("List contains, " + _searchValue + ", at index:  " + _retVal.get(1) + ".");
+            } // end if
+            else {
+                // not found
+                System.out.println("List does not contain: " + _searchValue + ".");
+            } // end if
+            // System.out.println("Does list contain, " + _searchValue + ": " + _list.contains(_searchValue));
+            System.out.println();
             
             // clear the list
             lineSeperator(80, '*');
@@ -184,17 +245,17 @@ public class App {
 
         } // end catch
         finally {
-
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
+            
             lineSeperator(80, '*');
+            _tEnd = Instant.now();
+            _tElapsed = Duration.between(_tStart, _tEnd);
+            System.out.println();
+            System.out.println("\tEND TIME: " + _tEnd);
+            System.out.println("\tTime for completion (milliseconds): " + _tElapsed.toMillis());
+            System.out.println();
 
             System.out.println(">>>>>>>>>> PROGRAM TERMINATED <<<<<<<<<<\n");
             System.out.println("END OF LINE");
-
-            lineSeperator(80, '*');
 
         } // end finally
     

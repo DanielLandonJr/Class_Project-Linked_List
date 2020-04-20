@@ -1,23 +1,48 @@
 package app;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
- *  
- * <p><strong><em>Application Name: </em></strong>Class_Project-Linked_List</p>
- * <p><strong><em>Class Name: </em></strong>LinkedList</p>
  * 
- * <p><strong><em>Application Notes: </em></strong>none</p>
- *  
- * <p><strong><em>Class Notes: </em></strong>noone</p>
+ * <p>
+ * <strong><em>Application Name: </em></strong>Class_Project-Linked_List
+ * </p>
+ * <p>
+ * <strong><em>Class Name: </em></strong>LinkedList
+ * </p>
  * 
- * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+ * <p>
+ * <strong><em>Application Notes: </em></strong>none
+ * </p>
  * 
- * <p><strong><em>Post-Conditions: </em></strong>none</p>
+ * <p>
+ * <strong><em>Class Notes: </em></strong>noone
+ * </p>
  * 
- * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
- * <p><strong><em>Instructor: </em></strong>Dr. Robert Walsh</p>
- * <p><strong><em>Course: </em></strong>SP20-SE-CSCI-C202-17057</p>
- * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
- * <p><strong><em>Due Date: </em></strong>04.23.2020</p>
+ * <p>
+ * <strong><em>Pre-Conditions: </em></strong>none
+ * </p>
+ * 
+ * <p>
+ * <strong><em>Post-Conditions: </em></strong>none
+ * </p>
+ * 
+ * <p>
+ * <strong><em>Author: </em></strong>Daniel C. Landon Jr.
+ * </p>
+ * <p>
+ * <strong><em>Instructor: </em></strong>Dr. Robert Walsh
+ * </p>
+ * <p>
+ * <strong><em>Course: </em></strong>SP20-SE-CSCI-C202-17057
+ * </p>
+ * <p>
+ * <strong><em>Start Date: </em></strong>04.20.2020
+ * </p>
+ * <p>
+ * <strong><em>Due Date: </em></strong>04.23.2020
+ * </p>
  * 
  */
 public class LinkedList<T> {    
@@ -115,6 +140,7 @@ public class LinkedList<T> {
 
             // add element to the list
             
+            // reset the head
             Node<T> _current = _head;
             
             // loop through the list till we get to the end
@@ -305,5 +331,51 @@ public class LinkedList<T> {
         _head = _newHead;
 
     } // end addFront
+
+    /**
+     * 
+     * <p><strong><em>Description: </em></strong>checks to see if the list contains a specific value</p>
+     * 
+     * <p><strong><em>Method Name: </em></strong>contains</p>
+     *  
+     * <p><strong><em>Method Notes: </em></strong>doing something a little differnt on the return value</p>
+     * 
+     * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Post-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
+     * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
+     *
+     * @param element value to search for in list
+     * @return list contains boolean value for value found and index for where it can be found
+     */
+    public List<Object> contains(T element) {
+
+        // variables
+        boolean _found = false;
+        int _index = 0;
+        int _nodeSize = Node.counter;
+            
+        // reset the head
+        Node<T> _current = _head;
+
+        // loop the list
+        for(int _lC = 0; _lC < _nodeSize; _lC++) {
+
+            if(_current.element.equals(element)) {
+                _found = true;
+                _index = _lC;
+                break; // bounce out
+            } // end if
+
+            // advance the list
+            _current = _current.next;
+
+        } // end _lC
+
+        return Arrays.asList(_found, _index);
+
+    } // end contains
 
 } // end LinkedList
