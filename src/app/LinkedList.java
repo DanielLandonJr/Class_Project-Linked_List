@@ -27,6 +27,52 @@ public class LinkedList<T> {
 
     /**
      * 
+     * <p><strong><em>Description: </em></strong>manipulates list for display</p>
+     * 
+     * <p><strong><em>Method Name: </em></strong>show</p>
+     *  
+     * <p><strong><em>Method Notes: </em></strong>none</p>
+     * 
+     * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Post-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
+     * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
+     *
+     * @return manipulated string for display
+     */
+    public String show() {
+
+        System.out.println("ENTER: show(), displays list.");
+
+        //variables
+        StringBuilder _results = new StringBuilder("[");
+
+        // reset to head
+        Node<T> _current = _head;
+        
+        // loop the list
+        for(int _lC = 0; _lC < Node.counter; _lC++) {
+
+            // add current element of list to string
+            _results.append("\"" + _current.element);
+
+            // advance the list
+            _current = _current.next;
+
+            // some fancy string manipulation
+            if(_current != null) { _results.append("\", "); } // end if
+            else { _results.append("\"] - Total List Size: " + Node.counter); } // end else
+
+        } // end _lC
+
+        return _results.toString();
+
+    } // end show
+
+    /**
+     * 
      * <p><strong><em>Description: </em></strong>adds element to list</p>
      * 
      * <p><strong><em>Method Name: </em></strong>add</p>
@@ -44,10 +90,12 @@ public class LinkedList<T> {
      */
     public void add(T element) {
 
+        System.out.println("ENTER: add(T element), Adding: " + element);
+
         if(_head == null) { 
 
             // the list is empty so create a new list
-            _head = new Node<T>(element); 
+            _head = new Node<T>(element);
 
         } // end if
         else {
@@ -64,6 +112,33 @@ public class LinkedList<T> {
 
         } // end else
 
+        // increment the node counter
+        Node.counter++;
+
     } // end add
+
+    /**
+     * 
+     * <p><strong><em>Description: </em></strong>Description</p>
+     * 
+     * <p><strong><em>Method Name: </em></strong>Method Name</p>
+     *  
+     * <p><strong><em>Method Notes: </em></strong>Method Notes</p>
+     * 
+     * <p><strong><em>Pre-Conditions: </em></strong>Pre-Conditions</p>
+     * 
+     * <p><strong><em>Post-Conditions: </em></strong>Post-Conditions</p>
+     * 
+     * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
+     * <p><strong><em>Start Date: </em></strong>Start Date</p>
+     *
+     * @param element
+     */
+    public void delete(T element) {
+
+        System.out.println("ENTER: delete(T element), Deleting: " + element);
+
+
+    } // end delete
 
 } // end LinkedList

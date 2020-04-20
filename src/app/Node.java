@@ -6,6 +6,8 @@ public class Node<T> {
 
     T element;
 
+    static int counter = 0;
+
     public Node(T element) {
         this.element = element;
     }
