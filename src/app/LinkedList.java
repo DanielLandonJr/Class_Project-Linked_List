@@ -274,4 +274,36 @@ public class LinkedList<T> {
     
     } // end clear
 
+    /**
+     * 
+     * <p><strong><em>Description: </em></strong>adds element to front of list</p>
+     * 
+     * <p><strong><em>Method Name: </em></strong>addFront</p>
+     *  
+     * <p><strong><em>Method Notes: </em></strong>none</p>
+     * 
+     * <p><strong><em>Pre-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Post-Conditions: </em></strong>none</p>
+     * 
+     * <p><strong><em>Author: </em></strong>Daniel C. Landon Jr.</p>
+     * <p><strong><em>Start Date: </em></strong>04.20.2020</p>
+     *
+     * @param element item to add to front of list
+     */
+    public void addFront(T element) {
+
+        System.out.println("ENTER: addFront(T element), add element to front of list: " + element);
+        
+        // create a new node to contain the new head
+        Node<T> _newHead = new Node<T>(element);
+
+        //set the next for the _newHead to the current head
+        _newHead.next = _head;
+
+        // set the head to the _newHead
+        _head = _newHead;
+
+    } // end addFront
+
 } // end LinkedList

@@ -137,6 +137,24 @@ public class App {
             System.out.println();
             System.out.println("\n" + _list.show());
             System.out.println();
+
+            // add new element to head of list and shift everything down
+            lineSeperator(80, '*');
+            System.out.println();
+            System.out.println(">>>>>>>>>> ADD NEW HEAD ELEMENT <<<<<<<<<<");
+            System.out.println();
+            System.out.println("Is the list Empty: " + _list.isEmpty());
+            System.out.println("Number of elements in list: " + _list.getSize());
+            System.out.println();
+            System.out.println("\n" + _list.show());
+            System.out.println();
+            _list.addFront("Bob's Your Uncle");
+            System.out.println();
+            System.out.println("Is the list Empty: " + _list.isEmpty());
+            System.out.println("Number of elements in list: " + _list.getSize());
+            System.out.println();
+            System.out.println("\n" + _list.show());
+            System.out.println();
             
             // clear the list
             lineSeperator(80, '*');
