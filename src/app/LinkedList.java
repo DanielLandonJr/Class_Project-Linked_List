@@ -47,25 +47,38 @@ public class LinkedList<T> {
         System.out.println("ENTER: show(), displays list.");
 
         //variables
-        StringBuilder _results = new StringBuilder("[");
+        StringBuilder _results = new StringBuilder("");
+        int _nodeSize = Node.counter;
 
-        // reset to head
-        Node<T> _current = _head;
-        
-        // loop the list
-        for(int _lC = 0; _lC < Node.counter; _lC++) {
+        if(_nodeSize == 0) {
 
-            // add current element of list to string
-            _results.append("\"" + _current.element);
+            // list is empty
+            _results.append("Nothing to display, List is Empty!");
 
-            // advance the list
-            _current = _current.next;
+        } // end if
+        else {
+    
+            // reset to head
+            Node<T> _current = _head;
 
-            // some fancy string manipulation
-            if(_current != null) { _results.append("\", "); } // end if
-            else { _results.append("\"] - Total List Size: " + Node.counter); } // end else
+            _results.append("[");
+            
+            // loop the list
+            for(int _lC = 0; _lC < _nodeSize; _lC++) {
+    
+                // add current element of list to string
+                _results.append("\"" + _current.element);
+    
+                // advance the list
+                _current = _current.next;
+    
+                // some fancy string manipulation
+                if(_current != null) { _results.append("\", "); } // end if
+                else { _results.append("\"]"); } // end else
+    
+            } // end _lC
 
-        } // end _lC
+        } // end else
 
         return _results.toString();
 
@@ -119,11 +132,11 @@ public class LinkedList<T> {
 
     /**
      * 
-     * <p><strong><em>Description: </em></strong>Description</p>
+     * <p><strong><em>Description: </em></strong>delete element based on value, from any position in list</p>
      * 
-     * <p><strong><em>Method Name: </em></strong>Method Name</p>
+     * <p><strong><em>Method Name: </em></strong>delete</p>
      *  
-     * <p><strong><em>Method Notes: </em></strong>Method Notes</p>
+     * <p><strong><em>Method Notes: </em></strong>for this method I do it a bit differently from the code supplied. instead of deleting the element i simply reposition the next value so it points to the node after the one i want to delete. i let garbage collection clear up the node that has now been skipped and no longer available. if we delete the first node i simply reposition the head to the original heads next node.</p>
      * 
      * <p><strong><em>Pre-Conditions: </em></strong>Pre-Conditions</p>
      * 
@@ -138,6 +151,66 @@ public class LinkedList<T> {
 
         System.out.println("ENTER: delete(T element), Deleting: " + element);
 
+        // variables
+        int _nodeSize = Node.counter;
+
+        // is the list empty?
+        if(_nodeSize == 0) {
+
+            // list is empty
+            System.out.println("Nothing to delete, List is Empty!");
+
+        } // end if
+        else {
+
+            // list is not empty
+
+            // are we trying to delete the head node?
+            if(_head.element == element) {
+                // list = {1, 2, 3, 4, 5}
+                // we want to delete 1, the head
+                // next value for 1 currently equals 2
+                // we change the current head to where it equals its current next value which is 2
+                // 1 is now gone and 2 is the new head
+                
+                _head = _head.next; 
+
+            } // end if
+            else {
+
+                // we are deleteing something other than the head
+            
+                // variables
+                Node<T> _current = _head;
+                
+                // loop the list
+                while(_current.next != null) {
+                    // list = {1, 2, 3, 4, 5}
+                    // we want to delete 3
+                    // next value for 2 currently equals 3
+                    // we change the next value of 2 from 3 to 4
+                    // 3 is now gone
+
+                    // if the value of the next node is equal to what we want to delete
+                    if(_current.next.element == element) {
+
+                        // point the next counter for the current node to the next counter for the node we want to delete
+                        _current.next = _current.next.next;
+                        break; // get out of the list...we are done
+
+                    } // end if
+
+                    // advance the list
+                    _current = _current.next;
+
+                } // end while
+
+            } // end else
+
+            // decrement the node count to reflect a removal
+            Node.counter--;
+
+        } // end else
 
     } // end delete
 
@@ -147,7 +220,7 @@ public class LinkedList<T> {
      * 
      * <p><strong><em>Method Name: </em></strong>isEmpty</p>
      *  
-     * <p><strong><em>Method Notes: </em></strong>none</p>
+     * <p><strong><em>Method Notes: </em></strong>did not include sysout echo in this method as we will be in and out like a revolving door...will flood the console</p>
      * 
      * <p><strong><em>Pre-Conditions: </em></strong>none</p>
      * 
@@ -160,7 +233,7 @@ public class LinkedList<T> {
      */
     public boolean isEmpty() {
 
-        if(Node.counter == 0) { return true ;} // end if
+        if(getSize() == 0) { return true ;} // end if
         else { return false; } // end else
 
     } // end isEmpty
@@ -171,7 +244,7 @@ public class LinkedList<T> {
      * 
      * <p><strong><em>Method Name: </em></strong>getSize</p>
      *  
-     * <p><strong><em>Method Notes: </em></strong>none</p>
+     * <p><strong><em>Method Notes: </em></strong>did not include sysout echo in this method as we will be in and out like a revolving door...will flood the console</p>
      * 
      * <p><strong><em>Pre-Conditions: </em></strong>none</p>
      * 
@@ -187,5 +260,18 @@ public class LinkedList<T> {
         return Node.counter;
 
     } // end getSize
+
+    public void clear() {
+
+        System.out.println("ENTER: clear(), clear entire list.");
+
+        // clear the list
+        _head = null;
+
+        // rest the counter
+        Node.counter = 0;
+
+    
+    } // end clear
 
 } // end LinkedList
